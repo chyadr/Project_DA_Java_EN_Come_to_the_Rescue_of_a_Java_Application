@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Map;
 
 /**
- * implementation  part
+ * Implementation  part
  */
 public class WriteSymptomOccurrencesIntoFile implements ISymptomWriter {
     private final String filePath;
@@ -28,12 +28,11 @@ public class WriteSymptomOccurrencesIntoFile implements ISymptomWriter {
                 }
 
             } catch (IOException e) {
-                System.out.println( "Error occuring during writing into file, please contact your administrator, for more details : " + e.getMessage());
+                System.out.println("Error occuring during writing into file, please contact your administrator, for more details : " + e.getMessage());
             }
             System.out.println("**************************************** End Writing to file ***********************************************");
         }
     }
-
 
 
 }

@@ -11,26 +11,31 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Testing Part
+ */
 public class AnalyticsTest {
 
-    private static final String filePathReader="Project02Eclipse\\symptoms.txt";
-    private static final String filePathWriter="Project02Eclipse\\results.out.txt";
+    private static final String filePathReader = "Project02Eclipse\\symptoms.txt";
+    private static final String filePathWriter = "Project02Eclipse\\results.out.txt";
 
-
+    /**
+     * @param args : Are params that can be provided in our method(not provided in our case)
+     */
     public static void main(String[] args) {
 
         // This allows program to work in all Windows machines by retrieving automatically file path
         // .// indicate use current directory
-        File currentDirectoryReader = new File(".\\"+filePathReader);
-        File currentDirectoryWriter = new File(".\\"+filePathWriter);
+        File currentDirectoryReader = new File(".\\" + filePathReader);
+        File currentDirectoryWriter = new File(".\\" + filePathWriter);
 
         // using getAbsolutePath in order to get the path as a whole
         ISymptomReader reader = new ReadSymptomDataFromFile(currentDirectoryReader.getAbsolutePath());
         ISymptomCalculateOccurrences calculator = new CalculateSymptomsOccurrences();
-        ISymptomWriter writer= new WriteSymptomOccurrencesIntoFile(currentDirectoryWriter.getAbsolutePath());
+        ISymptomWriter writer = new WriteSymptomOccurrencesIntoFile(currentDirectoryWriter.getAbsolutePath());
         // I called my methods from my  classes to read file, calculate occurrences and write the symptoms:their occurrences
         List<String> symptoms = reader.GetSymptoms();
-        Map<String,Integer> mapOccurrences = calculator.getOccurrences(symptoms);
+        Map<String, Integer> mapOccurrences = calculator.getOccurrences(symptoms);
         writer.writeSymptomsOccurrences(mapOccurrences);
 
     }
