@@ -28,7 +28,7 @@ public class WriteSymptomOccurrencesIntoFile implements ISymptomWriter {
                 }
 
             } catch (IOException e) {
-                System.out.println("Error occuring during writing into file, please contact your administrator, for more details : " + e.getMessage());
+                System.out.println("Error occurring during writing into file, please contact your administrator, for more details : " + e.getMessage());
             }
             System.out.println("**************************************** End Writing to file ***********************************************");
         }
