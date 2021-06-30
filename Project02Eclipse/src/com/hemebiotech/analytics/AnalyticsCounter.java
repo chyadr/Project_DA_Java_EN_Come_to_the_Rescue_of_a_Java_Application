@@ -1,43 +1,38 @@
 package com.hemebiotech.analytics;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
+import com.hemebiotech.analytics.calculator.CalculateSymptomsOccurrences;
+import com.hemebiotech.analytics.calculator.ISymptomCalculateOccurrences;
+import com.hemebiotech.analytics.reader.ISymptomReader;
+import com.hemebiotech.analytics.reader.ReadSymptomDataFromFile;
+import com.hemebiotech.analytics.writer.ISymptomWriter;
+import com.hemebiotech.analytics.writer.WriteSymptomOccurrencesIntoFile;
 
+import java.util.List;
+import java.util.Map;
+
+/**
+ * Testing Part
+ */
 public class AnalyticsCounter {
-	private static int headacheCount = 0;	// initialize to 0
-	private static int rashCount = 0;		// initialize to 0
-	private static int pupilCount = 0;		// initialize to 0
-	
-	public static void main(String args[]) throws Exception {
-		// first get input
-		BufferedReader reader = new BufferedReader (new FileReader("symptoms.txt"));
-		String line = reader.readLine();
 
-		int i = 0;	// set i to 0
-		int headCount = 0;	// counts headaches
-		while (line != null) {
-			i++;	// increment i
-			System.out.println("symptom from file: " + line);
-			if (line.equals("headache")) {
-				headCount++;
-				System.out.println("number of headaches: " + headCount);
-			}
-			else if (line.equals("rush")) {
-				rashCount++;
-			}
-			else if (line.contains("pupils")) {
-				pupilCount++;
-			}
+    private static final String filePathReader = "Project02Eclipse\\symptoms.txt";
+    private static final String filePathWriter = "Project02Eclipse\\results.out.txt";
 
-			line = reader.readLine();	// get another symptom
-		}
-		
-		// next generate output
-		FileWriter writer = new FileWriter ("result.out");
-		writer.write("headache: " + headacheCount + "\n");
-		writer.write("rash: " + rashCount + "\n");
-		writer.write("dialated pupils: " + pupilCount + "\n");
-		writer.close();
-	}
+    /**
+     * @param args : Are params that can be provided in our method(not provided in our case)
+     */
+    public static void main(String[] args) {
+
+        // using getAbsolutePath in order to get the path as a whole
+        ISymptomReader reader = new ReadSymptomDataFromFile(filePathReader);
+        ISymptomCalculateOccurrences calculator = new CalculateSymptomsOccurrences();
+        ISymptomWriter writer = new WriteSymptomOccurrencesIntoFile(filePathWriter);
+        // I called my methods from my  classes to read file, calculate occurrences and write the symptoms:their occurrences
+        List<String> symptoms = reader.getSymptoms();
+        Map<String, Integer> mapOccurrences = calculator.getOccurrences(symptoms);
+        writer.writeSymptomsOccurrences(mapOccurrences);
+
+    }
+
+
 }

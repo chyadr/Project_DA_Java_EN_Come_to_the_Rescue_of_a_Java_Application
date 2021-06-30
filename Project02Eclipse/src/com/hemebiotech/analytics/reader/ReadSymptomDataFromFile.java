@@ -24,7 +24,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 
     @Override
     // rename from GetSymptoms to getSymptoms by following java convention name
-    public List<String> GetSymptoms() {
+    public List<String> getSymptoms() {
         // https://stackoverflow.com/questions/7716435/why-would-you-declare-an-interface-and-then-instantiate-an-object-with-it-in-jav
         // Coding to an interface, long term
         // for example if we have 2 variables of List(interface) type, Arraylist(class) and LinkedList(class), we can affect the result

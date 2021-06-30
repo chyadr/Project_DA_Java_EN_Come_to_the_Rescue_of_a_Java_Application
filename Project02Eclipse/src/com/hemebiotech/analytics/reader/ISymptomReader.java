@@ -13,5 +13,5 @@ public interface ISymptomReader {
      *
      * @return : A raw listing of all Symptoms obtained from a data source, duplicates are possible/probable
      */
-    List<String> GetSymptoms(); // rename from GetSymptoms to getSymptoms by following java convention name
+    List<String> getSymptoms(); // rename from GetSymptoms to getSymptoms by following java convention name
 }
