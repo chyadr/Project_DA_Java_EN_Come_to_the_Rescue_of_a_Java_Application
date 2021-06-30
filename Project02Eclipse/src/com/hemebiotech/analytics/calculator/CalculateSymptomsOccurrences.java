@@ -11,7 +11,7 @@ public class CalculateSymptomsOccurrences implements ISymptomCalculateOccurrence
     @Override
     public Map<String,Integer> getOccurrences(List<String> symptoms) {
         System.out.println("**************************************** Start Calculating from List ***********************************************");
-        Map<String,Integer> mapOccurrences = new HashMap<>();
+        Map<String,Integer> mapOccurrences = new TreeMap<>();
         for (String symptom : symptoms) {
 
             mapOccurrences.put(symptom, mapOccurrences.getOrDefault(symptom, 0) + 1);
