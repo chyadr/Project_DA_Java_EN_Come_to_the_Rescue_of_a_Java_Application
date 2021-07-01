@@ -12,8 +12,8 @@ public interface ISymptomCalculateOccurrences {
     /**
      * Aims to bring occurrences by calculating
      *
-     * @param: Symptoms list that will be provided by the reader
-     * @return: This method should return the symptoms with their number of occurrences
+     * @param symptoms list that will be provided by the reader
+     * @return This method should return the symptoms with their number of occurrences
      */
     Map<String, Integer> getOccurrences(List<String> symptoms);
 
